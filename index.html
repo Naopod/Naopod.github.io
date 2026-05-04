@@ -13,16 +13,32 @@
   </head>
   <body>
     <main class="graph-app" aria-label="Anthony Pierre personal knowledge graph">
-      <svg id="knowledge-graph" role="img" aria-label="Interactive graph"></svg>
+      <header class="site-name" aria-label="Site identity">
+        <a href="./" aria-label="Anthony Pierre home">Anthony Pierre</a>
+      </header>
+
+      <a class="cv-link" href="assets/pdf/cv.pdf" target="_blank" rel="noreferrer" aria-label="Open Anthony Pierre CV">
+        View CV
+      </a>
+
+      <div id="knowledge-graph" role="application" aria-label="Interactive 3D planetary graph"></div>
 
       <div id="graph-status" class="graph-status" role="status" aria-live="polite">Loading graph...</div>
 
       <button id="back-button" class="graph-control" type="button" hidden aria-label="Return to main graph">
         Back
       </button>
+
+      <aside id="node-info" class="node-info" hidden aria-labelledby="info-title">
+        <button id="info-close" class="info-close" type="button" aria-label="Close node details">Close</button>
+        <p id="info-category" class="info-category"></p>
+        <h2 id="info-title"></h2>
+        <p id="info-description"></p>
+        <ul id="info-details" class="info-details"></ul>
+      </aside>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
     <script src="assets/js/graph.js"></script>
   </body>
 </html>

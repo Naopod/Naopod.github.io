@@ -1,14 +1,14 @@
 :root {
-  --bg: #080b10;
-  --ink: #f4efe6;
-  --muted: rgba(244, 239, 230, 0.62);
-  --line: rgba(244, 239, 230, 0.12);
-  --line-strong: rgba(142, 213, 226, 0.5);
-  --accent: #8ed5e2;
-  --project: #e4a66a;
-  --research: #bfa7ff;
-  --experience: #91d18b;
-  --education: #77aef2;
+  --bg: #030713;
+  --ink: #eafcff;
+  --muted: rgba(207, 244, 255, 0.62);
+  --line: rgba(118, 235, 255, 0.16);
+  --line-strong: rgba(118, 235, 255, 0.72);
+  --accent: #76ebff;
+  --project: #ffb86c;
+  --research: #caa8ff;
+  --experience: #88ffbd;
+  --education: #75a7ff;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--ink);
@@ -25,12 +25,21 @@ body {
   margin: 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 48%, rgba(142, 213, 226, 0.08), transparent 34rem),
-    linear-gradient(180deg, #0a0f17 0%, #07090d 100%);
+    radial-gradient(circle at 16% 22%, rgba(0, 221, 255, 0.22), transparent 21rem),
+    radial-gradient(circle at 78% 20%, rgba(158, 93, 255, 0.22), transparent 25rem),
+    radial-gradient(circle at 48% 58%, rgba(255, 62, 181, 0.14), transparent 27rem),
+    radial-gradient(circle at 72% 78%, rgba(255, 155, 66, 0.13), transparent 23rem),
+    radial-gradient(circle at 28% 82%, rgba(68, 255, 184, 0.12), transparent 22rem),
+    linear-gradient(180deg, #071128 0%, #030713 48%, #01030a 100%);
 }
 
 button {
   font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .graph-app {
@@ -40,7 +49,67 @@ button {
   overflow: hidden;
 }
 
+.graph-app::before,
+.graph-app::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.graph-app::before {
+  z-index: 0;
+  opacity: 0.48;
+  background-image:
+    linear-gradient(rgba(118, 235, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(118, 235, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(118, 235, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(118, 235, 255, 0.035) 1px, transparent 1px),
+    radial-gradient(circle, rgba(234, 252, 255, 0.75) 0 1px, transparent 1.3px),
+    radial-gradient(circle, rgba(118, 235, 255, 0.62) 0 1px, transparent 1.5px);
+  background-position: center, center, center, center, 28px 42px, 118px 86px;
+  background-size: 88px 88px, 88px 88px, 22px 22px, 22px 22px, 184px 184px, 286px 286px;
+}
+
+.graph-app::after {
+  z-index: 1;
+  background:
+    linear-gradient(115deg, transparent 0 47%, rgba(118, 235, 255, 0.075) 47.15%, transparent 47.6% 100%),
+    linear-gradient(65deg, transparent 0 57%, rgba(202, 168, 255, 0.055) 57.15%, transparent 57.55% 100%),
+    radial-gradient(ellipse at center, rgba(3, 7, 19, 0.08) 0%, rgba(3, 7, 19, 0.16) 46%, rgba(1, 3, 10, 0.46) 100%),
+    linear-gradient(90deg, rgba(3, 7, 19, 0.34), transparent 22%, transparent 78%, rgba(3, 7, 19, 0.34));
+}
+
+.site-name {
+  position: fixed;
+  left: clamp(1rem, 3vw, 2rem);
+  top: clamp(1rem, 3vw, 2rem);
+  z-index: 8;
+  color: rgba(244, 239, 230, 0.94);
+  font-size: clamp(1.75rem, 4vw, 3.35rem);
+  font-weight: 760;
+  letter-spacing: 0;
+  line-height: 0.95;
+  text-shadow:
+    0 0 14px rgba(118, 235, 255, 0.28),
+    0 0 42px rgba(118, 235, 255, 0.18);
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.site-name a {
+  display: inline-flex;
+  padding: 0.2rem 0;
+}
+
+.site-name a:hover,
+.site-name a:focus-visible {
+  outline: none;
+  color: var(--accent);
+}
+
 #knowledge-graph {
+  position: relative;
+  z-index: 2;
   display: block;
   width: 100%;
   height: 100%;
@@ -48,8 +117,50 @@ button {
   touch-action: none;
 }
 
+.cv-link {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  top: clamp(1rem, 3vw, 2rem);
+  z-index: 9;
+  min-height: 2.55rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(142, 213, 226, 0.32);
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  color: rgba(244, 239, 230, 0.9);
+  background: linear-gradient(180deg, rgba(118, 235, 255, 0.11), rgba(8, 14, 30, 0.62));
+  box-shadow:
+    inset 0 0 18px rgba(118, 235, 255, 0.08),
+    0 0 28px rgba(118, 235, 255, 0.12);
+  backdrop-filter: blur(18px);
+  transition: opacity 520ms ease, border-color 180ms ease, background 180ms ease, transform 520ms ease;
+}
+
+body.is-intro .site-name,
+body.is-intro .cv-link {
+  opacity: 0;
+  transform: translateY(-0.8rem);
+  pointer-events: none;
+}
+
+.cv-link:hover,
+.cv-link:focus-visible {
+  outline: none;
+  border-color: rgba(142, 213, 226, 0.72);
+  background: rgba(142, 213, 226, 0.12);
+  transform: translateY(-1px);
+}
+
 #knowledge-graph:active {
   cursor: grabbing;
+}
+
+#knowledge-graph canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .graph-status {
@@ -70,14 +181,14 @@ button {
 .graph-control {
   position: fixed;
   right: clamp(1rem, 3vw, 2rem);
-  top: clamp(1rem, 3vw, 2rem);
+  top: calc(clamp(1rem, 3vw, 2rem) + 3.15rem);
   z-index: 6;
   min-width: 4.6rem;
   min-height: 2.45rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--ink);
-  background: rgba(244, 239, 230, 0.1);
+  background: linear-gradient(180deg, rgba(118, 235, 255, 0.1), rgba(8, 14, 30, 0.58));
   backdrop-filter: blur(18px);
   cursor: pointer;
   transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
@@ -91,18 +202,95 @@ button {
   transform: translateY(-1px);
 }
 
+.node-info {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  top: calc(clamp(1rem, 3vw, 2rem) + 6.25rem);
+  z-index: 7;
+  width: min(27rem, calc(100vw - 2rem));
+  max-height: min(34rem, calc(100vh - 7rem));
+  overflow: auto;
+  border: 1px solid rgba(118, 235, 255, 0.24);
+  border-radius: 12px;
+  padding: 1rem;
+  color: var(--ink);
+  background:
+    linear-gradient(180deg, rgba(12, 24, 48, 0.84), rgba(3, 7, 19, 0.82)),
+    radial-gradient(circle at top left, rgba(118, 235, 255, 0.14), transparent 18rem);
+  box-shadow:
+    inset 0 0 0 1px rgba(234, 252, 255, 0.04),
+    0 0 42px rgba(118, 235, 255, 0.1),
+    0 26px 80px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(22px);
+}
+
+.info-close {
+  float: right;
+  min-height: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  color: rgba(244, 239, 230, 0.74);
+  background: rgba(244, 239, 230, 0.08);
+  cursor: pointer;
+}
+
+.info-close:hover,
+.info-close:focus-visible {
+  outline: none;
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.info-category {
+  margin: 0 0 0.55rem;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 760;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.node-info h2 {
+  margin: 0;
+  padding-right: 4.5rem;
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.node-info p {
+  margin: 0.8rem 0 0;
+  color: rgba(244, 239, 230, 0.68);
+}
+
+.info-details {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.info-details li {
+  border-left: 1px solid rgba(142, 213, 226, 0.35);
+  padding-left: 0.7rem;
+  color: rgba(244, 239, 230, 0.76);
+}
+
 .graph-link {
-  stroke: rgba(244, 239, 230, 0.16);
-  stroke-width: 1.1;
+  stroke: rgba(118, 235, 255, 0.28);
+  stroke-width: 1.15;
   transition: opacity 240ms ease, stroke 240ms ease, stroke-width 240ms ease;
 }
 
 .graph-node {
   cursor: pointer;
   stroke: rgba(244, 239, 230, 0.72);
-  stroke-width: 1.5;
+  stroke-width: 1.75;
   filter:
-    drop-shadow(0 0 12px rgba(142, 213, 226, 0.16))
+    drop-shadow(0 0 12px rgba(234, 252, 255, 0.16))
+    drop-shadow(0 0 26px rgba(118, 235, 255, 0.26))
     drop-shadow(0 16px 32px rgba(0, 0, 0, 0.24));
   transition: opacity 240ms ease, stroke-width 240ms ease, filter 240ms ease;
 }
@@ -111,7 +299,8 @@ button {
   stroke: rgba(244, 239, 230, 0.95);
   stroke-width: 2.2;
   filter:
-    drop-shadow(0 0 22px rgba(142, 213, 226, 0.28))
+    drop-shadow(0 0 18px rgba(234, 252, 255, 0.28))
+    drop-shadow(0 0 42px rgba(118, 235, 255, 0.5))
     drop-shadow(0 22px 44px rgba(0, 0, 0, 0.32));
 }
 
@@ -121,18 +310,18 @@ button {
   outline: none;
   stroke-width: 3.4;
   filter:
-    drop-shadow(0 0 26px rgba(142, 213, 226, 0.36))
+    drop-shadow(0 0 34px rgba(118, 235, 255, 0.55))
     drop-shadow(0 24px 48px rgba(0, 0, 0, 0.36));
 }
 
 .graph-label {
   pointer-events: none;
   fill: rgba(244, 239, 230, 0.9);
-  font-size: 13px;
-  font-weight: 640;
+  font-size: 14px;
+  font-weight: 700;
   letter-spacing: 0;
   paint-order: stroke;
-  stroke: rgba(8, 11, 16, 0.86);
+  stroke: rgba(1, 3, 10, 0.92);
   stroke-linejoin: round;
   stroke-width: 5px;
   text-anchor: middle;
@@ -140,13 +329,13 @@ button {
 
 .graph-label.is-center {
   fill: var(--ink);
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 720;
 }
 
 .graph-description {
   pointer-events: none;
-  fill: rgba(244, 239, 230, 0.52);
+  fill: rgba(207, 244, 255, 0.58);
   font-size: 11px;
   font-weight: 460;
   paint-order: stroke;
@@ -168,6 +357,25 @@ button {
 }
 
 @media (max-width: 680px) {
+  .site-name {
+    left: 1rem;
+    top: 0.9rem;
+    font-size: 1.55rem;
+  }
+
+  .cv-link {
+    right: 0.75rem;
+    top: 0.75rem;
+    min-height: 2.25rem;
+    padding: 0.45rem 0.7rem;
+  }
+
+  .node-info {
+    inset: 6.6rem 0.75rem auto;
+    width: auto;
+    max-height: 45vh;
+  }
+
   .graph-label {
     font-size: 11px;
   }

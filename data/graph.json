@@ -5,7 +5,12 @@
         "id": "anthony-pierre",
         "label": "Anthony Pierre",
         "category": "Center",
-        "description": "Personal knowledge graph"
+        "description": "PhD Candidate working across finance, data science, actuarial modelling, climate risk and graph-based methods.",
+        "details": [
+          "Research Fellow & PhD Candidate at Nexialog Consulting R&D, Paris.",
+          "Preparing a dual PhD in Mathematics and Economics at Universite Paris-Dauphine.",
+          "Research focus: Temporal Graph Neural Networks for spatio-temporal clustering."
+        ]
       },
       "nodes": [
         {
@@ -52,49 +57,115 @@
         "id": "projects",
         "label": "Projects",
         "category": "Projects",
-        "description": "Applied tools and prototypes"
+        "description": "Academic and non-academic projects."
       },
       "nodes": [
         {
-          "id": "portfolio-analytics-app",
-          "label": "Portfolio Analytics App",
+          "id": "academic-projects",
+          "label": "Academic Projects",
           "category": "Projects",
-          "description": "Portfolio diagnostics, allocation views and financial monitoring."
+          "description": "Theses and university research projects.",
+          "view": "academic-projects"
         },
         {
-          "id": "climate-health-insurance-modelling",
-          "label": "Climate-health Insurance Modelling",
+          "id": "non-academic-projects",
+          "label": "Non Academic Projects",
           "category": "Projects",
-          "description": "Climate vulnerability and health insurance risk modelling."
-        },
-        {
-          "id": "quantum-feature-maps-exploration",
-          "label": "Quantum Feature Maps Exploration",
-          "category": "Projects",
-          "description": "Experiments with feature maps and graph-based quantum encoding."
-        },
-        {
-          "id": "economic-scenario-generator",
-          "label": "Economic Scenario Generator",
-          "category": "Projects",
-          "description": "Prototype for coherent market and macroeconomic scenarios."
-        },
-        {
-          "id": "geospatial-sales-analytics-app",
-          "label": "Geospatial Sales Analytics App",
-          "category": "Projects",
-          "description": "Mapping and analysis of commercial performance by territory."
+          "description": "Personal and applied software projects.",
+          "view": "non-academic-projects"
         }
       ],
       "links": [
-        { "source": "projects", "target": "portfolio-analytics-app" },
-        { "source": "projects", "target": "climate-health-insurance-modelling" },
-        { "source": "projects", "target": "quantum-feature-maps-exploration" },
-        { "source": "projects", "target": "economic-scenario-generator" },
-        { "source": "projects", "target": "geospatial-sales-analytics-app" },
-        { "source": "portfolio-analytics-app", "target": "economic-scenario-generator" },
-        { "source": "climate-health-insurance-modelling", "target": "geospatial-sales-analytics-app" },
-        { "source": "quantum-feature-maps-exploration", "target": "economic-scenario-generator" }
+        { "source": "projects", "target": "academic-projects" },
+        { "source": "projects", "target": "non-academic-projects" },
+        { "source": "academic-projects", "target": "non-academic-projects" }
+      ]
+    },
+    "academic-projects": {
+      "center": {
+        "id": "academic-projects",
+        "label": "Academic Projects",
+        "category": "Projects",
+        "description": "University theses and research projects."
+      },
+      "nodes": [
+        {
+          "id": "stock-market-thesis",
+          "label": "Stock Market Prediction Thesis",
+          "category": "Projects",
+          "description": "Licence thesis on machine learning and econometrics for stock market prediction.",
+          "details": [
+            "Title from the CV: Machine Learning and Econometrics to Predict Stock Market Prices.",
+            "Tools used: Python, statistics, clustering and econometrics.",
+            "Ranked 1st."
+          ]
+        },
+        {
+          "id": "exoplanetary-planets",
+          "label": "Characterization of Exoplanetary Planets",
+          "category": "Projects",
+          "description": "Master project on characterization of exoplanetary systems.",
+          "details": [
+            "Master 2 Data Science for Economics academic project.",
+            "Tools used: advanced statistics, Python, semi/non-supervised ML/DL, R and spatial statistics.",
+            "Ranked 1st."
+          ]
+        }
+      ],
+      "links": [
+        { "source": "academic-projects", "target": "stock-market-thesis" },
+        { "source": "academic-projects", "target": "exoplanetary-planets" },
+        { "source": "stock-market-thesis", "target": "exoplanetary-planets" }
+      ]
+    },
+    "non-academic-projects": {
+      "center": {
+        "id": "non-academic-projects",
+        "label": "Non Academic Projects",
+        "category": "Projects",
+        "description": "Personal and applied software projects outside academic coursework."
+      },
+      "nodes": [
+        {
+          "id": "portfolio-manager",
+          "label": "Portfolio Manager",
+          "category": "Projects",
+          "description": "Portfolio analytics and allocation project.",
+          "details": [
+            "Connected to investment decision-making, portfolio optimization and allocation strategy tooling.",
+            "Designed around financial data centralization and portfolio monitoring.",
+            "A natural extension of the investment fund platform work."
+          ]
+        },
+        {
+          "id": "trading-bot",
+          "label": "Trading Bot",
+          "category": "Projects",
+          "description": "Personal trading project combining statistics, time series and neural networks.",
+          "details": [
+            "CV project: High-Frequency Trading Bot.",
+            "Tools used: advanced statistics, time series analysis, sentiment analysis, chart analysis and Python.",
+            "Used neural network methods including LSTM."
+          ]
+        },
+        {
+          "id": "fund-application",
+          "label": "Fund Application",
+          "category": "Projects",
+          "description": "Investment fund web platform for collaborative decisions and governance.",
+          "details": [
+            "Centralizes fundamental, technical and market data for investment decision-making.",
+            "Implements portfolio optimization and allocation strategies.",
+            "Includes governance mechanisms: voting, member decisions and capital allocation rules."
+          ]
+        }
+      ],
+      "links": [
+        { "source": "non-academic-projects", "target": "portfolio-manager" },
+        { "source": "non-academic-projects", "target": "trading-bot" },
+        { "source": "non-academic-projects", "target": "fund-application" },
+        { "source": "portfolio-manager", "target": "fund-application" },
+        { "source": "portfolio-manager", "target": "trading-bot" }
       ]
     },
     "research": {
@@ -102,57 +173,87 @@
         "id": "research",
         "label": "Research",
         "category": "Research",
-        "description": "Questions, models and methods"
+        "description": "Research topics at the intersection of graphs, climate, finance, insurance and AI."
       },
       "nodes": [
+        {
+          "id": "temporal-gnn",
+          "label": "Temporal Graph Neural Networks",
+          "category": "Research",
+          "description": "PhD focus for spatio-temporal clustering.",
+          "details": [
+            "Dual PhD in Mathematics and Economics at Universite Paris-Dauphine.",
+            "Research topic from the CV: Temporal Graph Neural Networks for spatio-temporal clustering.",
+            "Connects graph learning, representation learning and spatial risk analysis."
+          ]
+        },
         {
           "id": "climate-risk",
           "label": "Climate Risk",
           "category": "Research",
-          "description": "Vulnerability, protection gap and non-stationary losses."
+          "description": "Climate vulnerability, insured losses and non-stationary risk.",
+          "details": [
+            "Professional work includes climate-risk data and predictive analytics for startups and SMEs.",
+            "Flood modelling mission translated hazard maps into financial losses on insured assets.",
+            "Research direction links climate vulnerability, prevention and insurance protection gaps."
+          ]
         },
         {
-          "id": "graph-modelling",
-          "label": "Graph Modelling",
+          "id": "nlp-insurance",
+          "label": "NLP for Insurance",
           "category": "Research",
-          "description": "Network representations for complex financial and insurance systems."
-        },
-        {
-          "id": "quantum-feature-maps",
-          "label": "Quantum Feature Maps",
-          "category": "Research",
-          "description": "Classical data encoded into quantum states."
-        },
-        {
-          "id": "spatio-temporal-modelling",
-          "label": "Spatio-temporal Modelling",
-          "category": "Research",
-          "description": "Risk evolving across geography and time."
+          "description": "Text and language use cases for the insurance industry.",
+          "details": [
+            "Designed NLP use cases for the insurance industry at Nexialog Consulting R&D.",
+            "CV coursework includes NLP during the Master Data Science for Economics.",
+            "Useful for claims documents, underwriting material, contracts and regulatory analysis."
+          ]
         },
         {
           "id": "economic-scenarios",
           "label": "Economic Scenarios",
           "category": "Research",
-          "description": "Macroeconomic and market paths for risk analysis."
+          "description": "Market-consistent and real-world scenarios for actuarial and financial modelling.",
+          "details": [
+            "Contributed to a Risk-Neutral Economic Scenario Generator for market-consistent valuation.",
+            "Developed a Real World Economic Scenario Generator during the actuarial internship.",
+            "Connected to Solvency II, ORSA, IFRS 17 and internal model applications."
+          ]
         },
         {
-          "id": "representation-learning",
-          "label": "Representation Learning",
+          "id": "spatio-temporal-modelling",
+          "label": "Spatio-temporal Modelling",
           "category": "Research",
-          "description": "Compact encodings of complex data."
+          "description": "Models for data evolving across both space and time.",
+          "details": [
+            "Used in customer analytics: temporal clustering, behavioral pattern detection, forecasting and segmentation.",
+            "Flood modelling work combined topographic data, interpolation, smoothing and graph propagation.",
+            "Central to the PhD direction on spatio-temporal clustering."
+          ]
+        },
+        {
+          "id": "quantum-finance",
+          "label": "Quantum / Blockchain / Finance",
+          "category": "Research",
+          "description": "Emerging computational methods connected to finance and economics.",
+          "details": [
+            "CV coursework includes Blockchain Economics.",
+            "Programming skills include Solidity.",
+            "The site can later expand this node toward quantum feature maps and quantum machine learning work."
+          ]
         }
       ],
       "links": [
+        { "source": "research", "target": "temporal-gnn" },
         { "source": "research", "target": "climate-risk" },
-        { "source": "research", "target": "graph-modelling" },
-        { "source": "research", "target": "quantum-feature-maps" },
-        { "source": "research", "target": "spatio-temporal-modelling" },
+        { "source": "research", "target": "nlp-insurance" },
         { "source": "research", "target": "economic-scenarios" },
-        { "source": "research", "target": "representation-learning" },
-        { "source": "graph-modelling", "target": "spatio-temporal-modelling" },
+        { "source": "research", "target": "spatio-temporal-modelling" },
+        { "source": "research", "target": "quantum-finance" },
+        { "source": "temporal-gnn", "target": "spatio-temporal-modelling" },
         { "source": "climate-risk", "target": "spatio-temporal-modelling" },
-        { "source": "quantum-feature-maps", "target": "representation-learning" },
-        { "source": "economic-scenarios", "target": "climate-risk" }
+        { "source": "economic-scenarios", "target": "climate-risk" },
+        { "source": "nlp-insurance", "target": "economic-scenarios" }
       ]
     },
     "experience": {
@@ -160,57 +261,86 @@
         "id": "experience",
         "label": "Experience",
         "category": "Experience",
-        "description": "Finance, insurance and analytics"
+        "description": "Professional experience in R&D, actuarial modelling, data science and teaching."
       },
       "nodes": [
         {
-          "id": "finance",
-          "label": "Finance",
+          "id": "nexialog-rd-phd",
+          "label": "Nexialog R&D",
           "category": "Experience",
-          "description": "Corporate finance, valuation and portfolio analysis."
+          "description": "Research Fellow & PhD Candidate, Paris, Nov 2025 - Present.",
+          "details": [
+            "Contributed to a Risk-Neutral Economic Scenario Generator for market-consistent valuation and actuarial applications.",
+            "Designed NLP use cases for the insurance industry.",
+            "Preparing a dual PhD in Mathematics and Economics focused on Temporal Graph Neural Networks."
+          ]
         },
         {
-          "id": "private-equity",
-          "label": "Private Equity",
+          "id": "flood-risk-mission",
+          "label": "Flood Risk Mission",
           "category": "Experience",
-          "description": "Investment analysis and company evaluation."
+          "description": "R&D mission for a major European insurer, Jul 2025 - Sept 2025.",
+          "details": [
+            "Reconstructed continuous flood surfaces from TRI regulatory maps with RGE ALTI / LiDAR data.",
+            "Designed interpolation, smoothing and graph-based extrapolation methods.",
+            "Converted hazard maps into financial losses through exposure-level impact modelling."
+          ]
         },
         {
-          "id": "insurance",
-          "label": "Insurance",
+          "id": "quant-analyst-actuarial",
+          "label": "Quant Analyst / Actuarial Intern",
           "category": "Experience",
-          "description": "Health, provident and climate-related insurance risks."
+          "description": "Nexialog Consulting, Paris, Apr 2025 - Sept 2025.",
+          "details": [
+            "Developed a Real World Economic Scenario Generator.",
+            "Built an internal ESG web platform with Python, Django, HTML, CSS, JavaScript and HTMX.",
+            "Drafted technical notes on ESGs, actuarial modelling standards, Solvency II, ORSA, IFRS 17 and internal models."
+          ]
         },
         {
-          "id": "orsa",
-          "label": "ORSA",
+          "id": "consultant-data-scientist",
+          "label": "Consultant Data Scientist",
           "category": "Experience",
-          "description": "Own Risk and Solvency Assessment topics."
+          "description": "Startups and SMEs, Paris, Oct 2024 - Feb 2025.",
+          "details": [
+            "Applied machine learning and deep learning to climate-risk data and predictive analytics.",
+            "Developed a web application for an agri-food SME with recipe search and commercial analytics tools.",
+            "Used 20+ years of historical client data for temporal clustering, forecasting and segmentation."
+          ]
         },
         {
-          "id": "pricing",
-          "label": "Pricing",
+          "id": "mayane-labs",
+          "label": "Mayane Labs",
           "category": "Experience",
-          "description": "Insurance and financial product pricing under risk constraints."
+          "description": "Data Scientist Intern, Paris, Apr 2024 - Sept 2024.",
+          "details": [
+            "Worked under the direction of Emma Haziza.",
+            "Participated in the development of software using satellite data.",
+            "Experience connected to climate, hydrology and data-driven risk analysis."
+          ]
         },
         {
-          "id": "portfolio-steering",
-          "label": "Portfolio Steering",
+          "id": "private-tutor",
+          "label": "Mathematics Tutor",
           "category": "Experience",
-          "description": "Monitoring profitability, exposure and portfolio dynamics."
+          "description": "Private Tutor in Mathematics at Completudes, Paris, Feb 2023 - Jul 2023.",
+          "details": [
+            "Tutored mathematics.",
+            "Built teaching experience and communication around quantitative reasoning."
+          ]
         }
       ],
       "links": [
-        { "source": "experience", "target": "finance" },
-        { "source": "experience", "target": "private-equity" },
-        { "source": "experience", "target": "insurance" },
-        { "source": "experience", "target": "orsa" },
-        { "source": "experience", "target": "pricing" },
-        { "source": "experience", "target": "portfolio-steering" },
-        { "source": "finance", "target": "private-equity" },
-        { "source": "insurance", "target": "orsa" },
-        { "source": "insurance", "target": "pricing" },
-        { "source": "insurance", "target": "portfolio-steering" }
+        { "source": "experience", "target": "nexialog-rd-phd" },
+        { "source": "experience", "target": "flood-risk-mission" },
+        { "source": "experience", "target": "quant-analyst-actuarial" },
+        { "source": "experience", "target": "consultant-data-scientist" },
+        { "source": "experience", "target": "mayane-labs" },
+        { "source": "experience", "target": "private-tutor" },
+        { "source": "nexialog-rd-phd", "target": "quant-analyst-actuarial" },
+        { "source": "nexialog-rd-phd", "target": "flood-risk-mission" },
+        { "source": "consultant-data-scientist", "target": "mayane-labs" },
+        { "source": "flood-risk-mission", "target": "mayane-labs" }
       ]
     },
     "education": {
@@ -218,48 +348,66 @@
         "id": "education",
         "label": "Education",
         "category": "Education",
-        "description": "Academic background"
+        "description": "Academic background in economics, data science, finance and quantitative methods."
       },
       "nodes": [
+        {
+          "id": "uca-licence-1-2",
+          "label": "Universite Clermont-Auvergne",
+          "category": "Education",
+          "description": "Licence 1 & 2 in Economics.",
+          "details": [
+            "Licence 1 & 2 in Economics.",
+            "Built the initial foundations in economics, mathematics and quantitative reasoning.",
+            "This stage precedes the Licence 3 at Universite Paris-Est Creteil."
+          ]
+        },
+        {
+          "id": "upec-licence-3",
+          "label": "Universite Paris-Est Creteil",
+          "category": "Education",
+          "description": "Licence 3 in Economics.",
+          "details": [
+            "Bachelor in International Economics and Management.",
+            "Grade: Honours, valedictorian.",
+            "Coursework: Econometrics, Game Theory, Microeconomics, Stata, Python and General Algebraic Systems."
+          ]
+        },
+        {
+          "id": "paris-dauphine-psl",
+          "label": "Universite Paris-Dauphine - PSL",
+          "category": "Education",
+          "description": "Master 1 Quantitative Economics and Master 2 Data Science.",
+          "details": [
+            "Master 1 Quantitative Economics, 2022 - 2023.",
+            "M1 grade: Honours, rank 2, 14.9/20.",
+            "M1 coursework: Microeconomics, Macroeconomics, Macroeconometrics, Microeconometrics and Game Theory.",
+            "Master 2 Data Science for Economics, Mention Quantitative Economics, 2023 - 2024.",
+            "M2 grade: High Honours, top of the class, 17.887/20.",
+            "M2 coursework: Machine/Deep Learning, Industrial Organization, Financial Data and Systemic Risk, Blockchain Economics, Time Series Analysis, Anomaly Detection, NLP and Algorithmic Trading."
+          ]
+        },
         {
           "id": "ecole-polytechnique",
           "label": "Ecole Polytechnique",
           "category": "Education",
-          "description": "Advanced scientific and interdisciplinary training."
-        },
-        {
-          "id": "paris-dauphine",
-          "label": "Paris-Dauphine PSL",
-          "category": "Education",
-          "description": "Economics, finance and applied quantitative analysis."
-        },
-        {
-          "id": "economics",
-          "label": "Economics",
-          "category": "Education",
-          "description": "Economic reasoning, scenarios and institutions."
-        },
-        {
-          "id": "data-science",
-          "label": "Data Science",
-          "category": "Education",
-          "description": "Statistics, machine learning and analytical workflows."
-        },
-        {
-          "id": "corporate-finance",
-          "label": "Corporate Finance",
-          "category": "Education",
-          "description": "Valuation, capital allocation and financial analysis."
+          "description": "Master 2 Finance.",
+          "details": [
+            "MSC&T Second Year, Economics, Data Analytics and Corporate Finance, Finance track.",
+            "Period: Sept 2024 - Sept 2025.",
+            "Coursework: Stochastic Calculus, Financial Decisions under risk I & II, Financial Markets, Private Equity.",
+            "Also studied Big Data, Corporate Finance, Econometrics of Competition, Valuation of Startups and M&A."
+          ]
         }
       ],
       "links": [
+        { "source": "education", "target": "uca-licence-1-2" },
+        { "source": "education", "target": "upec-licence-3" },
+        { "source": "education", "target": "paris-dauphine-psl" },
         { "source": "education", "target": "ecole-polytechnique" },
-        { "source": "education", "target": "paris-dauphine" },
-        { "source": "education", "target": "economics" },
-        { "source": "education", "target": "data-science" },
-        { "source": "education", "target": "corporate-finance" },
-        { "source": "economics", "target": "corporate-finance" },
-        { "source": "data-science", "target": "economics" }
+        { "source": "uca-licence-1-2", "target": "upec-licence-3" },
+        { "source": "upec-licence-3", "target": "paris-dauphine-psl" },
+        { "source": "paris-dauphine-psl", "target": "ecole-polytechnique" }
       ]
     }
   }
