@@ -1,56 +1,57 @@
-# Anthony Pierre Personal Website
+# Anthony Pierre Personal Graph
 
-This repository hosts a static one-page personal website for GitHub Pages:
+Static GitHub Pages personal site:
 
+```text
 https://NAOPOD.github.io
+```
 
-The site is built with plain HTML, CSS and vanilla JavaScript. The interactive knowledge graph uses D3.js from a CDN and does not require React, Vue, Next.js, Vite, npm or a build step.
+The site is a full-screen dark-mode knowledge graph built with plain HTML, CSS, vanilla JavaScript and D3.js from a CDN. There is no npm dependency and no build step.
 
 ## Structure
 
 - `index.html` is the GitHub Pages entry point.
-- `assets/css/style.css` contains the visual design and responsive layout.
-- `assets/js/graph.js` loads and renders the D3 knowledge graph.
+- `assets/css/style.css` contains the full-screen dark UI.
+- `assets/js/graph.js` renders the D3 graph and handles view transitions.
 - `data/graph.json` contains the editable graph content.
-- `assets/pdf/cv.pdf` is the expected path for the downloadable CV.
 
 ## Editing the Graph
 
-Update `data/graph.json` to change the graph.
+The graph uses view-based navigation. The first view is `home`, with four main nodes:
 
-Each node can include:
+- `Projects`
+- `Research`
+- `Experience`
+- `Education`
+
+When a user clicks one of these nodes, `assets/js/graph.js` loads the matching view from `data/graph.json`.
+
+Each view has:
 
 ```json
 {
-  "id": "unique-node-id",
-  "label": "Visible node label",
-  "type": "skill",
-  "category": "Skill",
-  "description": "Text shown in the side panel.",
-  "skills": ["Python", "Finance"],
-  "links": [
-    { "label": "GitHub", "url": "https://github.com/NAOPOD" }
-  ]
+  "center": {
+    "id": "projects",
+    "label": "Projects",
+    "category": "Projects",
+    "description": "Applied tools and prototypes"
+  },
+  "nodes": [],
+  "links": []
 }
 ```
 
-Each link connects two node IDs:
+To make a node open another view, add a `view` property:
 
 ```json
-{ "source": "finance", "target": "portfolio-management" }
+{
+  "id": "projects",
+  "label": "Projects",
+  "category": "Projects",
+  "description": "Applied tools and prototypes",
+  "view": "projects"
+}
 ```
-
-Supported filter categories are `Domain`, `Project`, `Research`, `Experience`, `Education` and `Skill`. The central node uses `Center`.
-
-## Adding a CV
-
-Place the CV PDF at:
-
-```text
-assets/pdf/cv.pdf
-```
-
-The header, hero and contact links are already wired to this path.
 
 ## Local Testing
 
@@ -68,7 +69,7 @@ http://localhost:8000
 
 ## Deployment
 
-Push the repository to GitHub with GitHub Pages enabled for the root of the main branch. The site will be available at:
+Push the repository to GitHub with GitHub Pages enabled for the root of the `main` branch. The site will be available at:
 
 ```text
 https://NAOPOD.github.io

@@ -1,124 +1,64 @@
 (function () {
   const svg = d3.select("#knowledge-graph");
   const status = document.querySelector("#graph-status");
-  const panel = {
-    category: document.querySelector("#panel-category"),
-    title: document.querySelector("#panel-title"),
-    description: document.querySelector("#panel-description"),
-    skills: document.querySelector("#panel-skills"),
-    links: document.querySelector("#panel-links")
-  };
-  const filterButtons = document.querySelectorAll(".filter-button");
-  const searchInput = document.querySelector("#node-search");
-  const resetButton = document.querySelector("#reset-view");
+  const backButton = document.querySelector("#back-button");
 
   const colors = {
-    Center: "#0f3d4c",
-    Domain: "#1f6f78",
-    Research: "#6c5b7b",
-    Project: "#b45f3c",
-    Experience: "#61764b",
-    Education: "#8a6f3f",
-    Skill: "#4f6d8a"
+    Center: "#8ed5e2",
+    Projects: "#e4a66a",
+    Research: "#bfa7ff",
+    Experience: "#91d18b",
+    Education: "#77aef2"
   };
 
-  let graphData = null;
+  let dataset = null;
+  let currentView = "home";
   let simulation = null;
   let zoomBehavior = null;
-  let container = null;
-  let nodeSelection = null;
+  let stage = null;
   let linkSelection = null;
+  let nodeSelection = null;
   let labelSelection = null;
-  let currentFilter = "All";
-  let currentSearch = "";
+  let descriptionSelection = null;
 
-  function radiusFor(node) {
-    if (node.type === "center") return 34;
-    if (node.type === "domain") return 23;
-    if (node.category === "Project") return 18;
-    return 13;
-  }
-
-  function linkDistance(link) {
-    const sourceType = link.source.type || "";
-    const targetType = link.target.type || "";
-    if (sourceType === "center" || targetType === "center") return 145;
-    if (sourceType === "domain" || targetType === "domain") return 108;
-    return 82;
-  }
-
-  function getDimensions() {
-    const parent = svg.node().parentElement;
+  function viewport() {
     return {
-      width: Math.max(parent.clientWidth, 320),
-      height: Math.max(parent.clientHeight, 420)
+      width: window.innerWidth,
+      height: window.innerHeight
     };
   }
 
-  function updatePanel(node) {
-    panel.category.textContent = node.category || node.type || "Node";
-    panel.title.textContent = node.label;
-    panel.description.textContent = node.description || "No description available yet.";
-
-    panel.skills.innerHTML = "";
-    (node.skills || []).forEach((skill) => {
-      const item = document.createElement("li");
-      item.textContent = skill;
-      panel.skills.appendChild(item);
-    });
-    if (!node.skills || node.skills.length === 0) {
-      const item = document.createElement("li");
-      item.textContent = "No skill listed";
-      panel.skills.appendChild(item);
-    }
-
-    panel.links.innerHTML = "";
-    (node.links || []).forEach((link) => {
-      const item = document.createElement("li");
-      const anchor = document.createElement("a");
-      anchor.href = link.url;
-      anchor.textContent = link.label;
-      if (/^https?:\/\//.test(link.url)) {
-        anchor.target = "_blank";
-        anchor.rel = "noreferrer";
-      }
-      item.appendChild(anchor);
-      panel.links.appendChild(item);
-    });
-    if (!node.links || node.links.length === 0) {
-      const item = document.createElement("li");
-      item.textContent = "No external link";
-      panel.links.appendChild(item);
-    }
+  function radiusFor(node) {
+    if (node.isCenter) return currentView === "home" ? 42 : 48;
+    return currentView === "home" ? 31 : 23;
   }
 
-  function nodeMatches(node) {
-    const matchesFilter = currentFilter === "All" || node.category === currentFilter;
-    const text = `${node.label} ${node.description || ""} ${(node.skills || []).join(" ")}`.toLowerCase();
-    const matchesSearch = !currentSearch || text.includes(currentSearch);
-    return matchesFilter && matchesSearch;
+  function linkDistance(link) {
+    const hasCenter = link.source.isCenter || link.target.isCenter;
+    if (currentView === "home") return hasCenter ? 210 : 165;
+    return hasCenter ? 145 : 105;
   }
 
-  function applyVisibility() {
-    if (!graphData) return;
-    const visibleIds = new Set(graphData.nodes.filter(nodeMatches).map((node) => node.id));
-
-    nodeSelection
-      .classed("is-muted", (node) => !visibleIds.has(node.id))
-      .classed("is-search-match", (node) => Boolean(currentSearch) && visibleIds.has(node.id));
-
-    labelSelection.classed("is-muted", (node) => !visibleIds.has(node.id));
-
-    linkSelection.classed("is-muted", (link) => {
-      const sourceId = typeof link.source === "object" ? link.source.id : link.source;
-      const targetId = typeof link.target === "object" ? link.target.id : link.target;
-      return !visibleIds.has(sourceId) || !visibleIds.has(targetId);
-    });
+  function buildView(viewName) {
+    const view = dataset.views[viewName] || dataset.views.home;
+    const center = {
+      ...view.center,
+      isCenter: true,
+      x: 0,
+      y: 0,
+      fx: 0,
+      fy: 0
+    };
+    const nodes = [center, ...view.nodes.map((node) => ({ ...node, isCenter: false }))];
+    return {
+      nodes,
+      links: view.links.map((link) => ({ ...link }))
+    };
   }
 
-  function connectedIdsFor(node) {
+  function connectedIds(node, graph) {
     const ids = new Set([node.id]);
-    graphData.links.forEach((link) => {
+    graph.links.forEach((link) => {
       const sourceId = typeof link.source === "object" ? link.source.id : link.source;
       const targetId = typeof link.target === "object" ? link.target.id : link.target;
       if (sourceId === node.id) ids.add(targetId);
@@ -127,69 +67,84 @@
     return ids;
   }
 
-  function highlight(node) {
-    const ids = connectedIdsFor(node);
-    nodeSelection.classed("is-related", (item) => ids.has(item.id)).classed("is-dimmed", (item) => !ids.has(item.id));
-    labelSelection.classed("is-related", (item) => ids.has(item.id)).classed("is-dimmed", (item) => !ids.has(item.id));
-    linkSelection.classed("is-related", (link) => ids.has(link.source.id) && ids.has(link.target.id));
+  function setHighlight(node, graph) {
+    const ids = connectedIds(node, graph);
+    nodeSelection.classed("is-muted", (item) => !ids.has(item.id)).classed("is-active", (item) => item.id === node.id);
+    labelSelection.classed("is-muted", (item) => !ids.has(item.id));
+    descriptionSelection.classed("is-muted", (item) => !ids.has(item.id));
+    linkSelection
+      .classed("is-muted", (link) => !ids.has(link.source.id) || !ids.has(link.target.id))
+      .classed("is-active", (link) => link.source.id === node.id || link.target.id === node.id);
   }
 
   function clearHighlight() {
-    nodeSelection.classed("is-related", false).classed("is-dimmed", false);
-    labelSelection.classed("is-related", false).classed("is-dimmed", false);
-    linkSelection.classed("is-related", false);
+    nodeSelection.classed("is-muted", false).classed("is-active", false);
+    labelSelection.classed("is-muted", false);
+    descriptionSelection.classed("is-muted", false);
+    linkSelection.classed("is-muted", false).classed("is-active", false);
   }
 
-  function resetView() {
-    const { width, height } = getDimensions();
+  function zoomToCenter(scale) {
+    const { width, height } = viewport();
     svg
       .transition()
-      .duration(600)
-      .call(zoomBehavior.transform, d3.zoomIdentity.translate(width / 2, height / 2).scale(0.86));
-    simulation.alpha(0.45).restart();
+      .duration(760)
+      .ease(d3.easeCubicOut)
+      .call(zoomBehavior.transform, d3.zoomIdentity.translate(width / 2, height / 2).scale(scale));
   }
 
-  function render(data) {
-    graphData = {
-      nodes: data.nodes.map((node) => ({ ...node })),
-      links: data.links.map((link) => ({ ...link }))
-    };
+  function openView(node) {
+    if (!node.view) return;
+    render(node.view, node.id);
+  }
 
-    const { width, height } = getDimensions();
+  function render(viewName, sourceNodeId) {
+    currentView = viewName;
+    backButton.hidden = currentView === "home";
+
+    const graph = buildView(viewName);
+    const { width, height } = viewport();
+
+    if (simulation) simulation.stop();
+
     svg.attr("viewBox", [0, 0, width, height]);
     svg.selectAll("*").remove();
-    container = svg.append("g");
 
-    const linkLayer = container.append("g").attr("class", "links");
-    const nodeLayer = container.append("g").attr("class", "nodes");
-    const labelLayer = container.append("g").attr("class", "labels");
+    const defs = svg.append("defs");
+    const glow = defs.append("filter").attr("id", "soft-glow");
+    glow.append("feGaussianBlur").attr("stdDeviation", 4).attr("result", "blur");
+    const merge = glow.append("feMerge");
+    merge.append("feMergeNode").attr("in", "blur");
+    merge.append("feMergeNode").attr("in", "SourceGraphic");
+
+    stage = svg.append("g").attr("class", "stage");
+    const linkLayer = stage.append("g").attr("class", "links");
+    const nodeLayer = stage.append("g").attr("class", "nodes");
+    const textLayer = stage.append("g").attr("class", "texts");
 
     linkSelection = linkLayer
       .selectAll("line")
-      .data(graphData.links)
+      .data(graph.links)
       .join("line")
       .attr("class", "graph-link");
 
     nodeSelection = nodeLayer
       .selectAll("circle")
-      .data(graphData.nodes)
+      .data(graph.nodes)
       .join("circle")
-      .attr("class", "graph-node")
+      .attr("class", (node) => `graph-node${node.isCenter ? " is-center" : ""}`)
       .attr("r", radiusFor)
-      .attr("fill", (node) => colors[node.category] || colors.Skill)
+      .attr("fill", (node) => colors[node.category] || colors.Center)
+      .attr("filter", "url(#soft-glow)")
       .attr("tabindex", 0)
       .attr("role", "button")
-      .attr("aria-label", (node) => `Open details for ${node.label}`)
-      .on("mouseenter focus", function (_event, node) {
-        d3.select(this).raise();
-        highlight(node);
-      })
+      .attr("aria-label", (node) => `${node.label}. ${node.description || ""}`)
+      .on("mouseenter focus", (_event, node) => setHighlight(node, graph))
       .on("mouseleave blur", clearHighlight)
-      .on("click keydown", function (event, node) {
+      .on("click keydown", (event, node) => {
         if (event.type === "keydown" && event.key !== "Enter" && event.key !== " ") return;
         event.preventDefault();
-        updatePanel(node);
-        highlight(node);
+        openView(node);
       })
       .call(
         d3
@@ -205,44 +160,44 @@
           })
           .on("end", (event, node) => {
             if (!event.active) simulation.alphaTarget(0);
-            if (node.type !== "center") {
+            if (!node.isCenter) {
               node.fx = null;
               node.fy = null;
             }
           })
       );
 
-    labelSelection = labelLayer
-      .selectAll("text")
-      .data(graphData.nodes)
+    labelSelection = textLayer
+      .selectAll("text.graph-label")
+      .data(graph.nodes)
       .join("text")
-      .attr("class", "graph-label")
-      .attr("text-anchor", "middle")
-      .attr("dy", (node) => radiusFor(node) + 14)
+      .attr("class", (node) => `graph-label${node.isCenter ? " is-center" : ""}`)
+      .attr("dy", (node) => radiusFor(node) + 18)
       .text((node) => node.label);
 
-    const centerNode = graphData.nodes.find((node) => node.type === "center");
-    if (centerNode) {
-      centerNode.fx = 0;
-      centerNode.fy = 0;
-      updatePanel(centerNode);
-    }
+    descriptionSelection = textLayer
+      .selectAll("text.graph-description")
+      .data(graph.nodes.filter((node) => !node.isCenter))
+      .join("text")
+      .attr("class", "graph-description")
+      .attr("dy", (node) => radiusFor(node) + 34)
+      .text((node) => node.description || "");
 
     simulation = d3
-      .forceSimulation(graphData.nodes)
+      .forceSimulation(graph.nodes)
       .force(
         "link",
         d3
-          .forceLink(graphData.links)
+          .forceLink(graph.links)
           .id((node) => node.id)
           .distance(linkDistance)
-          .strength(0.52)
+          .strength(0.62)
       )
-      .force("charge", d3.forceManyBody().strength((node) => (node.type === "center" ? -780 : -340)))
+      .force("charge", d3.forceManyBody().strength((node) => (node.isCenter ? -900 : -420)))
       .force("center", d3.forceCenter(0, 0))
-      .force("collide", d3.forceCollide().radius((node) => radiusFor(node) + 18).iterations(2))
-      .force("x", d3.forceX(0).strength(0.045))
-      .force("y", d3.forceY(0).strength(0.045))
+      .force("x", d3.forceX(0).strength(0.055))
+      .force("y", d3.forceY(0).strength(0.055))
+      .force("collide", d3.forceCollide().radius((node) => radiusFor(node) + 34).iterations(3))
       .on("tick", () => {
         linkSelection
           .attr("x1", (link) => link.source.x)
@@ -252,47 +207,45 @@
 
         nodeSelection.attr("cx", (node) => node.x).attr("cy", (node) => node.y);
         labelSelection.attr("x", (node) => node.x).attr("y", (node) => node.y);
+        descriptionSelection.attr("x", (node) => node.x).attr("y", (node) => node.y);
       });
 
     zoomBehavior = d3
       .zoom()
-      .scaleExtent([0.35, 2.8])
+      .scaleExtent([0.35, 4])
       .on("zoom", (event) => {
-        container.attr("transform", event.transform);
+        stage.attr("transform", event.transform);
       });
 
     svg.call(zoomBehavior);
-    resetView();
-    applyVisibility();
+    zoomToCenter(currentView === "home" ? 0.95 : 1.22);
+
+    if (sourceNodeId) {
+      const centerNode = graph.nodes.find((node) => node.isCenter);
+      if (centerNode) {
+        setTimeout(() => setHighlight(centerNode, graph), 220);
+      }
+    }
+
     status.hidden = true;
   }
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      currentFilter = button.dataset.filter;
-      filterButtons.forEach((item) => item.classList.toggle("active", item === button));
-      applyVisibility();
-    });
-  });
-
-  searchInput.addEventListener("input", (event) => {
-    currentSearch = event.target.value.trim().toLowerCase();
-    applyVisibility();
-  });
-
-  resetButton.addEventListener("click", resetView);
+  backButton.addEventListener("click", () => render("home"));
 
   window.addEventListener("resize", () => {
-    if (!graphData) return;
-    const { width, height } = getDimensions();
+    const { width, height } = viewport();
     svg.attr("viewBox", [0, 0, width, height]);
+    if (zoomBehavior) zoomToCenter(currentView === "home" ? 0.95 : 1.22);
   });
 
   d3.json("data/graph.json")
-    .then(render)
+    .then((loaded) => {
+      dataset = loaded;
+      render("home");
+    })
     .catch((error) => {
       console.error("Could not load graph data:", error);
       status.hidden = false;
-      status.textContent = "The graph data could not be loaded. Run a local server or check data/graph.json.";
+      status.textContent = "Graph data could not be loaded.";
     });
 })();
