@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Personal knowledge graph of Anthony Pierre: finance, data science, AI, climate risk, insurance and quantum computing."
+    >
+    <title>Anthony Pierre | Personal Knowledge Graph</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Anthony Pierre home">Anthony Pierre</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#graph">Graph</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/NAOPOD" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="nav-cta" href="assets/pdf/cv.pdf" download>CV</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">Personal knowledge graph</p>
+          <h1 id="hero-title">Anthony Pierre</h1>
+          <p class="hero-subtitle">Finance · Data Science · AI · Climate Risk · Insurance · Quantum</p>
+          <p class="hero-copy">
+            I build analytical tools and research ideas at the intersection of finance, insurance,
+            artificial intelligence, climate risk and quantum computing.
+          </p>
+          <div class="hero-actions" aria-label="Hero actions">
+            <a class="button primary" href="#graph">Explore the graph</a>
+            <a class="button secondary" href="https://github.com/NAOPOD" target="_blank" rel="noreferrer">View GitHub</a>
+            <a class="button ghost" href="mailto:contact@example.com">Contact</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="graph" class="graph-section" aria-labelledby="graph-title">
+        <div class="section-heading">
+          <p class="eyebrow">Interactive map</p>
+          <h2 id="graph-title">Explore the structure behind the profile</h2>
+          <p>
+            Click nodes to inspect details. Drag, zoom, filter or search to move through the graph.
+          </p>
+        </div>
+
+        <div class="graph-toolbar" aria-label="Graph controls">
+          <div class="filter-group" role="group" aria-label="Filter nodes by category">
+            <button class="filter-button active" type="button" data-filter="All">All</button>
+            <button class="filter-button" type="button" data-filter="Domain">Domain</button>
+            <button class="filter-button" type="button" data-filter="Project">Project</button>
+            <button class="filter-button" type="button" data-filter="Research">Research</button>
+            <button class="filter-button" type="button" data-filter="Experience">Experience</button>
+            <button class="filter-button" type="button" data-filter="Education">Education</button>
+            <button class="filter-button" type="button" data-filter="Skill">Skill</button>
+          </div>
+          <label class="search-label" for="node-search">
+            <span>Search node</span>
+            <input id="node-search" type="search" placeholder="Climate, Qiskit, ORSA..." autocomplete="off">
+          </label>
+          <button id="reset-view" class="reset-button" type="button">Reset view</button>
+        </div>
+
+        <div class="graph-layout">
+          <div class="graph-canvas" aria-label="Interactive personal knowledge graph">
+            <svg id="knowledge-graph" role="img" aria-labelledby="graph-title"></svg>
+            <div id="graph-status" class="graph-status" role="status" aria-live="polite">Loading graph...</div>
+          </div>
+
+          <aside id="node-panel" class="node-panel" aria-labelledby="panel-title">
+            <p id="panel-category" class="panel-category">Center</p>
+            <h3 id="panel-title">Anthony Pierre</h3>
+            <p id="panel-description">
+              Interdisciplinary profile combining finance, data science, actuarial science,
+              climate risk, AI and quantum computing.
+            </p>
+            <div class="panel-block">
+              <h4>Associated skills</h4>
+              <ul id="panel-skills" class="tag-list"></ul>
+            </div>
+            <div class="panel-block">
+              <h4>Links</h4>
+              <ul id="panel-links" class="panel-links"></ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="about" class="content-section" aria-labelledby="about-title">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2 id="about-title">A quantitative profile with research instincts</h2>
+        </div>
+        <p>
+          Anthony Pierre works across finance, data science, insurance, climate risk and emerging
+          computational methods. The site is designed as an explorable graph because the work is
+          interdisciplinary by nature: models, markets, risks and technologies inform each other.
+        </p>
+      </section>
+
+      <section id="projects" class="content-section" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <p class="eyebrow">Selected Projects</p>
+          <h2 id="projects-title">Applied analytical tools</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>Portfolio Analytics App</h3>
+            <p>Interactive portfolio diagnostics, valuation views and allocation analysis.</p>
+          </article>
+          <article class="project-card">
+            <h3>Climate-health Insurance Modelling</h3>
+            <p>Exploration of climate vulnerability, prevention and insurance portfolio exposure.</p>
+          </article>
+          <article class="project-card">
+            <h3>Quantum Feature Maps Exploration</h3>
+            <p>Research-oriented experiments with graph-based encoding and quantum machine learning.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="research" class="content-section" aria-labelledby="research-title">
+        <div class="section-heading">
+          <p class="eyebrow">Research Interests</p>
+          <h2 id="research-title">Where the graph becomes useful</h2>
+        </div>
+        <p>
+          Current interests include spatially correlated risk, non-stationary climate scenarios,
+          graph representation learning, economic scenario generation, quantum feature maps and
+          finance applications of advanced modelling.
+        </p>
+      </section>
+
+      <section id="contact" class="content-section contact-section" aria-labelledby="contact-title">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">Connect</h2>
+        </div>
+        <div class="contact-actions">
+          <a class="button primary" href="mailto:contact@example.com">Email</a>
+          <a class="button secondary" href="https://github.com/NAOPOD" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button ghost" href="assets/pdf/cv.pdf" download>Download CV</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <script src="assets/js/graph.js"></script>
+  </body>
+</html>

@@ -1,0 +1,435 @@
+{
+  "nodes": [
+    {
+      "id": "anthony-pierre",
+      "label": "Anthony Pierre",
+      "type": "center",
+      "category": "Center",
+      "description": "Interdisciplinary profile combining finance, data science, actuarial science, climate risk, AI and quantum computing.",
+      "skills": ["Finance", "Data Science", "AI", "Insurance", "Climate Risk", "Quantum Computing"],
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/NAOPOD" },
+        { "label": "CV", "url": "assets/pdf/cv.pdf" }
+      ]
+    },
+    {
+      "id": "academic-background",
+      "label": "Academic Background",
+      "type": "domain",
+      "category": "Domain",
+      "description": "Academic training in economics, data science, finance and quantitative methods.",
+      "skills": ["Economics", "Quantitative Methods", "Finance", "Data Science"]
+    },
+    {
+      "id": "finance",
+      "label": "Finance",
+      "type": "domain",
+      "category": "Domain",
+      "description": "Corporate finance, private equity, portfolio management, valuation and economic scenario generation.",
+      "skills": ["Corporate Finance", "Private Equity", "Portfolio Management", "Valuation"]
+    },
+    {
+      "id": "ai-data-science",
+      "label": "AI / Data Science",
+      "type": "domain",
+      "category": "Domain",
+      "description": "Machine learning, representation learning, graph-based modelling, NLP and predictive analytics.",
+      "skills": ["Machine Learning", "Graph Modelling", "NLP", "Predictive Analytics"]
+    },
+    {
+      "id": "insurance-actuarial",
+      "label": "Insurance / Actuarial Science",
+      "type": "domain",
+      "category": "Domain",
+      "description": "Health and provident insurance, pricing, ORSA, portfolio steering and climate-related insurance risks.",
+      "skills": ["Pricing", "ORSA", "Portfolio Steering", "Health Insurance"]
+    },
+    {
+      "id": "climate-risk",
+      "label": "Climate Risk",
+      "type": "domain",
+      "category": "Domain",
+      "description": "Climate-related vulnerabilities, protection gap, prevention, spatial correlation and non-stationary risks.",
+      "skills": ["Climate Scenarios", "Vulnerability Analysis", "Spatial Risk", "Prevention"]
+    },
+    {
+      "id": "quantum-computing",
+      "label": "Quantum Computing",
+      "type": "domain",
+      "category": "Domain",
+      "description": "Quantum feature maps, Qiskit, Hamiltonian methods, graph-based data encoding and applications to finance.",
+      "skills": ["Qiskit", "Quantum Feature Maps", "Hamiltonian Methods", "Quantum Machine Learning"]
+    },
+    {
+      "id": "software-projects",
+      "label": "Software Projects",
+      "type": "domain",
+      "category": "Domain",
+      "description": "Applied software projects in Python, Django, Streamlit and data-driven applications.",
+      "skills": ["Python", "Django", "Streamlit", "Data Applications"]
+    },
+    {
+      "id": "research-interests",
+      "label": "Research Interests",
+      "type": "domain",
+      "category": "Research",
+      "description": "Research topics connecting complex systems, graph modelling, finance, insurance, climate and quantum methods.",
+      "skills": ["Complex Systems", "Graph Modelling", "Finance", "Insurance", "Quantum Methods"]
+    },
+    {
+      "id": "ecole-polytechnique",
+      "label": "École Polytechnique",
+      "type": "education",
+      "category": "Education",
+      "description": "Academic environment focused on advanced quantitative, scientific and interdisciplinary training.",
+      "skills": ["Mathematics", "Scientific Modelling", "Quantitative Methods"]
+    },
+    {
+      "id": "paris-dauphine",
+      "label": "Paris-Dauphine PSL",
+      "type": "education",
+      "category": "Education",
+      "description": "Training connected to economics, finance, management science and applied quantitative analysis.",
+      "skills": ["Economics", "Finance", "Data Analysis"]
+    },
+    {
+      "id": "economics",
+      "label": "Economics",
+      "type": "skill",
+      "category": "Skill",
+      "description": "Economic reasoning applied to markets, institutions, scenarios and risk analysis.",
+      "skills": ["Macroeconomics", "Microeconomics", "Scenario Analysis"]
+    },
+    {
+      "id": "data-science",
+      "label": "Data Science",
+      "type": "skill",
+      "category": "Skill",
+      "description": "Data-driven modelling, statistical learning and applied analytical workflows.",
+      "skills": ["Python", "Statistics", "Machine Learning"]
+    },
+    {
+      "id": "corporate-finance",
+      "label": "Corporate Finance",
+      "type": "skill",
+      "category": "Skill",
+      "description": "Financial analysis, valuation logic and capital allocation questions.",
+      "skills": ["Valuation", "Financial Statements", "Capital Structure"]
+    },
+    {
+      "id": "private-equity",
+      "label": "Private Equity",
+      "type": "experience",
+      "category": "Experience",
+      "description": "Investment analysis and company evaluation in private-market contexts.",
+      "skills": ["Due Diligence", "Valuation", "Market Analysis"]
+    },
+    {
+      "id": "portfolio-management",
+      "label": "Portfolio Management",
+      "type": "skill",
+      "category": "Skill",
+      "description": "Allocation, monitoring and risk-return analysis across financial assets.",
+      "skills": ["Asset Allocation", "Risk Metrics", "Performance Analysis"]
+    },
+    {
+      "id": "valuation",
+      "label": "Valuation",
+      "type": "skill",
+      "category": "Skill",
+      "description": "Methods for estimating asset, company or portfolio value under uncertainty.",
+      "skills": ["DCF", "Comparables", "Sensitivity Analysis"]
+    },
+    {
+      "id": "economic-scenario-generators",
+      "label": "Economic Scenario Generators",
+      "type": "research",
+      "category": "Research",
+      "description": "Models producing coherent economic and financial scenarios for risk and allocation decisions.",
+      "skills": ["Stochastic Modelling", "Risk Simulation", "Asset Dynamics"]
+    },
+    {
+      "id": "dynamic-asset-allocation",
+      "label": "Dynamic Asset Allocation",
+      "type": "research",
+      "category": "Research",
+      "description": "Adaptive allocation methods responding to changing market regimes and risk forecasts.",
+      "skills": ["Portfolio Optimization", "Market Regimes", "Forecasting"]
+    },
+    {
+      "id": "machine-learning",
+      "label": "Machine Learning",
+      "type": "skill",
+      "category": "Skill",
+      "description": "Predictive modelling and pattern extraction from structured and unstructured data.",
+      "skills": ["Supervised Learning", "Feature Engineering", "Model Evaluation"]
+    },
+    {
+      "id": "graph-neural-networks",
+      "label": "Graph Neural Networks",
+      "type": "research",
+      "category": "Research",
+      "description": "Learning on graph-structured data for relational, spatial and complex-system problems.",
+      "skills": ["Graph Learning", "Message Passing", "Representation Learning"]
+    },
+    {
+      "id": "representation-learning",
+      "label": "Representation Learning",
+      "type": "research",
+      "category": "Research",
+      "description": "Methods that learn compact and meaningful encodings of complex data.",
+      "skills": ["Embeddings", "Latent Spaces", "Deep Learning"]
+    },
+    {
+      "id": "nlp",
+      "label": "NLP",
+      "type": "skill",
+      "category": "Skill",
+      "description": "Natural language processing for extracting signals from text and documents.",
+      "skills": ["Text Mining", "Embeddings", "Information Extraction"]
+    },
+    {
+      "id": "spatio-temporal-modelling",
+      "label": "Spatio-temporal Modelling",
+      "type": "research",
+      "category": "Research",
+      "description": "Modelling patterns that evolve across both geography and time.",
+      "skills": ["Spatial Statistics", "Time Series", "Risk Mapping"]
+    },
+    {
+      "id": "health-insurance",
+      "label": "Health Insurance",
+      "type": "experience",
+      "category": "Experience",
+      "description": "Insurance risks and portfolio questions connected to health coverage.",
+      "skills": ["Claims Analysis", "Pricing", "Risk Monitoring"]
+    },
+    {
+      "id": "provident-insurance",
+      "label": "Provident Insurance",
+      "type": "experience",
+      "category": "Experience",
+      "description": "Provident risk analysis, portfolio monitoring and exposure management.",
+      "skills": ["Portfolio Steering", "Risk Analysis", "Insurance Products"]
+    },
+    {
+      "id": "orsa",
+      "label": "ORSA",
+      "type": "experience",
+      "category": "Experience",
+      "description": "Own Risk and Solvency Assessment topics for insurance risk management.",
+      "skills": ["Solvency", "Risk Governance", "Scenario Analysis"]
+    },
+    {
+      "id": "pricing",
+      "label": "Pricing",
+      "type": "skill",
+      "category": "Skill",
+      "description": "Pricing methods for insurance and financial products under risk constraints.",
+      "skills": ["Actuarial Pricing", "Risk Premiums", "Model Calibration"]
+    },
+    {
+      "id": "portfolio-steering",
+      "label": "Portfolio Steering",
+      "type": "experience",
+      "category": "Experience",
+      "description": "Monitoring and steering portfolios through risk, profitability and exposure indicators.",
+      "skills": ["Dashboards", "KPI Design", "Risk Indicators"]
+    },
+    {
+      "id": "vulnerability-clustering",
+      "label": "Vulnerability Clustering",
+      "type": "research",
+      "category": "Research",
+      "description": "Grouping territories or populations by vulnerability patterns and exposure profiles.",
+      "skills": ["Clustering", "Geospatial Analysis", "Climate Risk"]
+    },
+    {
+      "id": "protection-gap",
+      "label": "Protection Gap",
+      "type": "research",
+      "category": "Research",
+      "description": "Analysis of the difference between economic losses and insured coverage.",
+      "skills": ["Insurance Economics", "Risk Transfer", "Climate Adaptation"]
+    },
+    {
+      "id": "climate-scenarios",
+      "label": "Climate Scenarios",
+      "type": "research",
+      "category": "Research",
+      "description": "Scenario narratives and quantitative pathways for climate-related risk analysis.",
+      "skills": ["Scenario Design", "Stress Testing", "Transition Risk"]
+    },
+    {
+      "id": "prevention",
+      "label": "Prevention",
+      "type": "research",
+      "category": "Research",
+      "description": "Risk reduction strategies before losses occur, especially in climate and health contexts.",
+      "skills": ["Risk Mitigation", "Public Policy", "Insurance Design"]
+    },
+    {
+      "id": "spatially-correlated-risks",
+      "label": "Spatially Correlated Risks",
+      "type": "research",
+      "category": "Research",
+      "description": "Risks whose intensity and losses are connected across nearby territories.",
+      "skills": ["Correlation", "Geospatial Modelling", "Aggregation Risk"]
+    },
+    {
+      "id": "non-stationary-risks",
+      "label": "Non-stationary Risks",
+      "type": "research",
+      "category": "Research",
+      "description": "Risks whose statistical properties evolve over time, challenging historical calibration.",
+      "skills": ["Time-varying Risk", "Climate Change", "Model Uncertainty"]
+    },
+    {
+      "id": "qiskit",
+      "label": "Qiskit",
+      "type": "skill",
+      "category": "Skill",
+      "description": "Python framework for quantum computing experiments and circuit construction.",
+      "skills": ["Quantum Circuits", "Python", "Simulation"]
+    },
+    {
+      "id": "quantum-feature-maps",
+      "label": "Quantum Feature Maps",
+      "type": "research",
+      "category": "Research",
+      "description": "Encoding classical data into quantum states for kernel or machine learning methods.",
+      "skills": ["Data Encoding", "Quantum Kernels", "Qiskit"]
+    },
+    {
+      "id": "hamiltonian-methods",
+      "label": "Hamiltonian Methods",
+      "type": "research",
+      "category": "Research",
+      "description": "Methods using Hamiltonian structure for physical, optimization or graph-inspired modelling.",
+      "skills": ["Hamiltonians", "Optimization", "Quantum Modelling"]
+    },
+    {
+      "id": "quantum-machine-learning",
+      "label": "Quantum Machine Learning",
+      "type": "research",
+      "category": "Research",
+      "description": "Machine learning approaches using quantum circuits, kernels or hybrid methods.",
+      "skills": ["Hybrid Models", "Quantum Kernels", "Feature Maps"]
+    },
+    {
+      "id": "finance-applications",
+      "label": "Finance Applications",
+      "type": "research",
+      "category": "Research",
+      "description": "Potential uses of quantum and advanced modelling in finance and risk analysis.",
+      "skills": ["Portfolio Risk", "Optimization", "Financial Modelling"]
+    },
+    {
+      "id": "portfolio-analytics-app",
+      "label": "Portfolio Analytics App",
+      "type": "project",
+      "category": "Project",
+      "description": "Applied application for portfolio diagnostics, allocation analysis and financial monitoring.",
+      "skills": ["Python", "Data Visualization", "Portfolio Analysis"]
+    },
+    {
+      "id": "climate-health-insurance-modelling",
+      "label": "Climate-health Insurance Modelling",
+      "type": "project",
+      "category": "Project",
+      "description": "Modelling project connecting climate vulnerability and health insurance risk.",
+      "skills": ["Climate Risk", "Health Insurance", "Geospatial Analysis"]
+    },
+    {
+      "id": "quantum-feature-maps-exploration",
+      "label": "Quantum Feature Maps Exploration",
+      "type": "project",
+      "category": "Project",
+      "description": "Experimental work around feature maps, graph encodings and quantum machine learning.",
+      "skills": ["Qiskit", "Quantum Feature Maps", "Research Prototyping"]
+    },
+    {
+      "id": "economic-scenario-generator",
+      "label": "Economic Scenario Generator",
+      "type": "project",
+      "category": "Project",
+      "description": "Prototype for generating coherent market and macroeconomic scenarios.",
+      "skills": ["Simulation", "Financial Modelling", "Risk Analysis"]
+    },
+    {
+      "id": "geospatial-sales-analytics-app",
+      "label": "Geospatial Sales Analytics App",
+      "type": "project",
+      "category": "Project",
+      "description": "Data application for mapping and analyzing commercial performance across territories.",
+      "skills": ["Geospatial Analytics", "Dashboards", "Data Visualization"]
+    }
+  ],
+  "links": [
+    { "source": "anthony-pierre", "target": "academic-background" },
+    { "source": "anthony-pierre", "target": "finance" },
+    { "source": "anthony-pierre", "target": "ai-data-science" },
+    { "source": "anthony-pierre", "target": "insurance-actuarial" },
+    { "source": "anthony-pierre", "target": "climate-risk" },
+    { "source": "anthony-pierre", "target": "quantum-computing" },
+    { "source": "anthony-pierre", "target": "software-projects" },
+    { "source": "anthony-pierre", "target": "research-interests" },
+    { "source": "academic-background", "target": "ecole-polytechnique" },
+    { "source": "academic-background", "target": "paris-dauphine" },
+    { "source": "academic-background", "target": "economics" },
+    { "source": "academic-background", "target": "data-science" },
+    { "source": "academic-background", "target": "corporate-finance" },
+    { "source": "finance", "target": "private-equity" },
+    { "source": "finance", "target": "portfolio-management" },
+    { "source": "finance", "target": "valuation" },
+    { "source": "finance", "target": "economic-scenario-generators" },
+    { "source": "finance", "target": "dynamic-asset-allocation" },
+    { "source": "ai-data-science", "target": "machine-learning" },
+    { "source": "ai-data-science", "target": "graph-neural-networks" },
+    { "source": "ai-data-science", "target": "representation-learning" },
+    { "source": "ai-data-science", "target": "nlp" },
+    { "source": "ai-data-science", "target": "spatio-temporal-modelling" },
+    { "source": "insurance-actuarial", "target": "health-insurance" },
+    { "source": "insurance-actuarial", "target": "provident-insurance" },
+    { "source": "insurance-actuarial", "target": "orsa" },
+    { "source": "insurance-actuarial", "target": "pricing" },
+    { "source": "insurance-actuarial", "target": "portfolio-steering" },
+    { "source": "climate-risk", "target": "vulnerability-clustering" },
+    { "source": "climate-risk", "target": "protection-gap" },
+    { "source": "climate-risk", "target": "climate-scenarios" },
+    { "source": "climate-risk", "target": "prevention" },
+    { "source": "climate-risk", "target": "spatially-correlated-risks" },
+    { "source": "climate-risk", "target": "non-stationary-risks" },
+    { "source": "quantum-computing", "target": "qiskit" },
+    { "source": "quantum-computing", "target": "quantum-feature-maps" },
+    { "source": "quantum-computing", "target": "hamiltonian-methods" },
+    { "source": "quantum-computing", "target": "quantum-machine-learning" },
+    { "source": "quantum-computing", "target": "finance-applications" },
+    { "source": "software-projects", "target": "portfolio-analytics-app" },
+    { "source": "software-projects", "target": "climate-health-insurance-modelling" },
+    { "source": "software-projects", "target": "quantum-feature-maps-exploration" },
+    { "source": "software-projects", "target": "economic-scenario-generator" },
+    { "source": "software-projects", "target": "geospatial-sales-analytics-app" },
+    { "source": "research-interests", "target": "graph-neural-networks" },
+    { "source": "research-interests", "target": "vulnerability-clustering" },
+    { "source": "research-interests", "target": "quantum-feature-maps" },
+    { "source": "research-interests", "target": "economic-scenario-generators" },
+    { "source": "climate-risk", "target": "insurance-actuarial" },
+    { "source": "ai-data-science", "target": "climate-risk" },
+    { "source": "ai-data-science", "target": "quantum-computing" },
+    { "source": "finance", "target": "insurance-actuarial" },
+    { "source": "finance", "target": "software-projects" },
+    { "source": "quantum-computing", "target": "research-interests" },
+    { "source": "graph-neural-networks", "target": "spatio-temporal-modelling" },
+    { "source": "vulnerability-clustering", "target": "health-insurance" },
+    { "source": "vulnerability-clustering", "target": "provident-insurance" },
+    { "source": "vulnerability-clustering", "target": "ai-data-science" },
+    { "source": "economic-scenario-generators", "target": "insurance-actuarial" },
+    { "source": "economic-scenario-generators", "target": "climate-scenarios" },
+    { "source": "portfolio-analytics-app", "target": "finance" },
+    { "source": "portfolio-analytics-app", "target": "valuation" },
+    { "source": "portfolio-analytics-app", "target": "portfolio-management" },
+    { "source": "quantum-feature-maps", "target": "ai-data-science" },
+    { "source": "quantum-feature-maps", "target": "research-interests" }
+  ]
+}
